@@ -21,4 +21,16 @@ function submitRoutine(args) {
   };
 }
 
-export { fetchRoutines, submitRoutine };
+function deleteRoutine(id) {
+  return async dispatch => {
+    console.log("deleting ", id);
+    const request = await fetch(`http://localhost:3002/routines/${id}`, {
+      method: "DELETE",
+      headers: {},
+    });
+    const success = await request.json();
+    console.log(success);
+  };
+}
+
+export { fetchRoutines, submitRoutine, deleteRoutine };
