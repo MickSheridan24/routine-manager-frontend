@@ -1,6 +1,4 @@
 function fetchRoutines() {
-  console.log("Action");
-
   return async dispatch => {
     const request = await fetch("http://localhost:3002/routines", {
       headers: { "Content-Type": "Application/json" },
@@ -11,4 +9,16 @@ function fetchRoutines() {
   };
 }
 
-export { fetchRoutines };
+function submitRoutine(args) {
+  return async dispatch => {
+    const request = await fetch("http://localhost:3002/routines", {
+      method: "POST",
+      headers: { "Content-Type": "Application/json" },
+      body: JSON.stringify(args),
+    });
+    const success = await request.json();
+    console.log(success);
+  };
+}
+
+export { fetchRoutines, submitRoutine };

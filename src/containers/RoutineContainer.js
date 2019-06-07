@@ -9,10 +9,14 @@ class RoutineContainer extends Component {
   }
   displayRoutines() {
     console.log(this.props.routines);
-    return this.props.routines.map(r => <RoutineBlock routine={r} />);
+    return this.props.routines.map(r => (
+      <li>
+        <RoutineBlock routine={r} />
+      </li>
+    ));
   }
   render() {
-    return <div>{this.displayRoutines()}</div>;
+    return <ul>{this.displayRoutines()}</ul>;
   }
 }
 function mapState(state) {
