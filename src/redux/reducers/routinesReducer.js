@@ -4,6 +4,8 @@ function routinesReducer(state = [], action) {
       return action.routines;
     case "ADD_ROUTINE":
       return [...state, action.routine];
+    case "DELETE_ROUTINE":
+      return state.filter(r => r.id !== action.routineId);
     default:
       return state;
   }

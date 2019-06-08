@@ -16,8 +16,12 @@ function submitRoutine(args) {
       headers: { "Content-Type": "Application/json" },
       body: JSON.stringify(args),
     });
-    const success = await request.json();
-    console.log(success);
+    const status = await request.json();
+    if (status.success) {
+      dispatch({ type: "ADD_ROUTINE", routine: status.routine });
+    } else {
+      alert("Somthing went wrong with your submission");
+    }
   };
 }
 
@@ -28,8 +32,12 @@ function deleteRoutine(id) {
       method: "DELETE",
       headers: {},
     });
-    const success = await request.json();
-    console.log(success);
+    const status = await request.json();
+    if (status.success) {
+      dispatch({ type: "DELETE_ROUTINE", routineId: id });
+    } else {
+      alert("Something went wrong with deleting your submission");
+    }
   };
 }
 
