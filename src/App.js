@@ -1,9 +1,9 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-
 import RoutineContainer from "./containers/RoutineContainer";
 import RoutineForm from "./components/RoutineForm";
+import UserSignUp from "./components/UserSignUp";
+import UserLogin from "./components/UserLogin";
 
 function App() {
   return (
@@ -11,6 +11,9 @@ function App() {
       <RoutineContainer />
       <br />
       <RoutineForm />
+      <UserSignUp />
+      <br />
+      <UserLogin />
     </div>
   );
 }

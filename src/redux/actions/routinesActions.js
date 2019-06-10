@@ -20,14 +20,13 @@ function submitRoutine(args) {
     if (status.success) {
       dispatch({ type: "ADD_ROUTINE", routine: status.routine });
     } else {
-      alert("Somthing went wrong with your submission");
+      alert(status.message);
     }
   };
 }
 
 function deleteRoutine(id) {
   return async dispatch => {
-    console.log("deleting ", id);
     const request = await fetch(`http://localhost:3002/routines/${id}`, {
       method: "DELETE",
       headers: {},
@@ -36,7 +35,7 @@ function deleteRoutine(id) {
     if (status.success) {
       dispatch({ type: "DELETE_ROUTINE", routineId: id });
     } else {
-      alert("Something went wrong with deleting your submission");
+      alert(status.message);
     }
   };
 }

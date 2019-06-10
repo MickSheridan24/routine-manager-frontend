@@ -8,7 +8,6 @@ class RoutineContainer extends Component {
     this.props.fetchRoutines();
   }
   displayRoutines() {
-    console.log(this.props.routines);
     return this.props.routines.map(r => (
       <li>
         <RoutineBlock routine={r} />

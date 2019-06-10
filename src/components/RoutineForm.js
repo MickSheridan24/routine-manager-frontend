@@ -10,6 +10,7 @@ function RoutineForm(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
+
     const args = { what, why, how, interval };
     props.submitRoutine(args);
   };
