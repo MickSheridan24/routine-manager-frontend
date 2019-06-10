@@ -1,11 +1,12 @@
 function fetchRoutines() {
   return async dispatch => {
     const request = await fetch("http://localhost:3002/routines", {
-      headers: { "Content-Type": "Application/json" },
+      headers: { "Content-Type": "Application/json", authorization: localStorage.getItem("token") || "" },
     });
-    const routines = await request.json();
-
-    dispatch({ type: "SET_ROUTINES", routines: routines });
+    const status = await request.json();
+    if (status.success) {
+      dispatch({ type: "SET_ROUTINES", routines: status.routines });
+    }
   };
 }
 
@@ -13,7 +14,7 @@ function submitRoutine(args) {
   return async dispatch => {
     const request = await fetch("http://localhost:3002/routines", {
       method: "POST",
-      headers: { "Content-Type": "Application/json" },
+      headers: { "Content-Type": "Application/json", authorization: localStorage.getItem("token") || "" },
       body: JSON.stringify(args),
     });
     const status = await request.json();
@@ -29,7 +30,7 @@ function deleteRoutine(id) {
   return async dispatch => {
     const request = await fetch(`http://localhost:3002/routines/${id}`, {
       method: "DELETE",
-      headers: {},
+      headers: { authorization: localStorage.getItem("token") },
     });
     const status = await request.json();
     if (status.success) {

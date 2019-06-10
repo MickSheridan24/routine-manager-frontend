@@ -18,8 +18,12 @@ function login(args) {
       body: JSON.stringify(args),
     });
     const status = await request.json();
-    debugger;
-    console.log(status);
+    if (status.success && status.token) {
+      localStorage.setItem("token", status.token);
+      console.log(localStorage.getItem("token"));
+    } else {
+      alert("Login failed");
+    }
   };
 }
 
