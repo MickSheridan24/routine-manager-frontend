@@ -7,6 +7,11 @@ function postUser(args) {
       body: JSON.stringify(args),
     });
     const status = await request.json();
+    if (status.success) {
+      alert("Signed up!");
+    } else {
+      alert(status.message);
+    }
   };
 }
 
